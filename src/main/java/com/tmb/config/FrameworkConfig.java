@@ -1,7 +1,9 @@
 package com.tmb.config;
 
 import com.tmb.converter.StringToBrowserTypeConverter;
+import com.tmb.enums.BrowserRemoteMode;
 import com.tmb.enums.BrowserType;
+import com.tmb.enums.RunModeBrowser;
 import org.aeonbits.owner.Config;
 
 /**
@@ -16,6 +18,13 @@ import org.aeonbits.owner.Config;
 })
 public interface FrameworkConfig extends Config {
     @DefaultValue("CHROME")
+    @Key("browser")
     @ConverterClass(StringToBrowserTypeConverter.class)
     BrowserType browser();
+
+    @Key("runModeBrowser")
+    RunModeBrowser browserRunMode();
+
+    @Key("browserRemoteMode")
+    BrowserRemoteMode browserRemoteMode();
 }
