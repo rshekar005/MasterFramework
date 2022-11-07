@@ -1,11 +1,8 @@
 package com.tmb.driver;
 
-import com.tmb.config.ConfigFactory;
-import com.tmb.enums.BrowserType;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.tmb.config.factory.ConfigFactory;
+import com.tmb.driver.web.local.LocalDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public final class Driver {
 
@@ -15,7 +12,7 @@ public final class Driver {
     static WebDriver driver = null;
 
     public void initDriver() {
-        driver = LocalDriverManager.getDriver();
+        driver = LocalDriverManager.getDriver(ConfigFactory.get().browser());
         driver.get("https://www.google.com");
     }
 
