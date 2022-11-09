@@ -9,8 +9,8 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public final class LocalDriverManager {
-    private LocalDriverManager() {
+public final class LocalDriverFactory {
+    private LocalDriverFactory() {
     }
 
     private static final Map<BrowserType, Supplier<WebDriver>> MAP = new EnumMap<BrowserType, Supplier<WebDriver>>(BrowserType.class);
