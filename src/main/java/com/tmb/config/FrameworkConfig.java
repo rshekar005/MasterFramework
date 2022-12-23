@@ -23,7 +23,7 @@ import java.net.URL;
 })
 public interface FrameworkConfig extends Config {
 
-    @DefaultValue("staging") q
+    @DefaultValue("staging")
     String environment();
 
     @Key("${environment}.webUrl")
