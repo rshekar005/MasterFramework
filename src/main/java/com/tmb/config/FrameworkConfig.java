@@ -1,11 +1,10 @@
 package com.tmb.config;
 
-import com.tmb.converter.StringToBrowserTypeConverter;
-import com.tmb.converter.StringToRunModeBrowser;
-import com.tmb.converter.StringToURLConverter;
+import com.tmb.converter.*;
 import com.tmb.enums.BrowserRemoteMode;
 import com.tmb.enums.BrowserType;
-import com.tmb.enums.RunModeBrowser;
+import com.tmb.enums.MobileRemoteType;
+import com.tmb.enums.RunModeType;
 import org.aeonbits.owner.Config;
 
 import java.net.URL;
@@ -18,21 +17,37 @@ import java.net.URL;
 @Config.Sources({
         "system:properties",
         "system:env",
-        "file:${user.dir}/src/test/resources/config.properties"
+        "file:${user.dir}/src/test/resources/config.properties",
+        "file:${user.dir}/src/test/resources/staging-config.properties",
+        "file:${user.dir}/src/test/resources/dev-config.properties"
 })
 public interface FrameworkConfig extends Config {
+
+    @DefaultValue("staging") q
+    String environment();
+
+    @Key("${environment}.webUrl")
+    String Weburl();
     @DefaultValue("CHROME")
     @Key("browser")
     @ConverterClass(StringToBrowserTypeConverter.class)
     BrowserType browser();
 
-    @Key("runModeBrowser")
+    @Key("runMode")
     @ConverterClass(StringToRunModeBrowser.class)
-    RunModeBrowser browserRunMode();
+    RunModeType runMode();
 
-    @ConverterClass(StringToBrowserTypeConverter.class)
+    @Key("mobileRunMode")
+    @ConverterClass(StringToRunModeBrowser.class)
+    RunModeType mobileRunMode();
+
+    @ConverterClass(StringToBrowserRemoteModeConverter.class)
     @Key("browserRemoteMode")
     BrowserRemoteMode browserRemoteMode();
+
+    @ConverterClass(StringToMobileRemoteMode.class)
+    @Key("mobileRemoteMode")
+    MobileRemoteType mobileRemoteMode();
 
     @ConverterClass(StringToURLConverter.class)
     @Key("seleniumGridURL")
@@ -41,4 +56,8 @@ public interface FrameworkConfig extends Config {
     @ConverterClass(StringToURLConverter.class)
     @Key("selenoidURL")
     URL selenoidURL();
+
+    @DefaultValue("http://127.0.0.1:4723/wd/hub")
+    @ConverterClass(StringToURLConverter.class)
+    URL localAppiumServerURL();
 }

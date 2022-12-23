@@ -1,6 +1,5 @@
-package com.tmb.driver.web.remote;
+package com.tmb.driver.factory.web.remote;
 
-import com.tmb.driver.web.remote.SeleniumGridFactory;
 import com.tmb.enums.BrowserRemoteMode;
 import com.tmb.enums.BrowserType;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +24,7 @@ public final class RemoteDriverFactory {
     }
 
     public static WebDriver getDriver(BrowserRemoteMode browserRemoteMode, BrowserType browserType) {
+        System.out.println(browserRemoteMode.name());
         return MAP.get(browserRemoteMode).apply(browserType);
     }
     /* Traditional Way

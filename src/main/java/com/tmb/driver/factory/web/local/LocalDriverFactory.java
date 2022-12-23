@@ -1,4 +1,4 @@
-package com.tmb.driver.web.local;
+package com.tmb.driver.factory.web.local;
 
 import com.tmb.driver.manager.web.local.ChromeManager;
 import com.tmb.driver.manager.web.local.FirefoxManager;

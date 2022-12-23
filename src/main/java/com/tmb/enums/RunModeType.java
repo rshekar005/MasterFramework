@@ -1,6 +1,6 @@
 package com.tmb.enums;
 
-public enum RunModeBrowser {
+public enum RunModeType {
     LOCAL,
     REMOTE;
 }

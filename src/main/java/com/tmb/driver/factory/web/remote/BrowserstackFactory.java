@@ -1,4 +1,4 @@
-package com.tmb.driver.web.remote;
+package com.tmb.driver.factory.web.remote;
 
 import com.tmb.driver.manager.web.remote.browserstack.BrowserStackChromeManager;
 import com.tmb.driver.manager.web.remote.browserstack.BrowserStackFirefoxManager;
